@@ -346,10 +346,10 @@ function addText() {
     fontFamily: 'Verdana, sans-serif',
     text: text.value,
     updateDragX: function (layer, x) {
-      return nearest(x, 10);
+      return nearest(x, 5);
     },
     updateDragY: function (layer, y) {
-      return nearest(y, 10);
+      return nearest(y, 5);
     },
   });
 }
