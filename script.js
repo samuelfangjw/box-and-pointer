@@ -14,6 +14,7 @@ var open = document.getElementById("open");
 var settings = document.getElementById("settings");
 var head = document.getElementById("head");
 var tail = document.getElementById("tail");
+var text = document.getElementById("add-text");
 var headSelect = document.getElementById("headSelect");
 var tailSelect = document.getElementById("tailSelect");
 var mycanvas = document.getElementById("myCanvas");
@@ -332,4 +333,23 @@ function downloadImage() {
   a.download = 'box-and-pointer.png';
   document.body.appendChild(a);
   a.click();
+}
+
+// Add text
+function addText() {
+  $('canvas').drawText({
+    draggable: true,
+    fillStyle: '#000',
+    strokeWidth: 2,
+    x: 150, y: 100,
+    fontSize: 18,
+    fontFamily: 'Verdana, sans-serif',
+    text: text.value,
+    updateDragX: function (layer, x) {
+      return nearest(x, 10);
+    },
+    updateDragY: function (layer, y) {
+      return nearest(y, 10);
+    },
+  });
 }
