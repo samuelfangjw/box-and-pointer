@@ -341,7 +341,7 @@ function addText() {
     draggable: true,
     fillStyle: '#000',
     strokeWidth: 2,
-    x: 150, y: 100,
+    x: 100, y: 100,
     fontSize: 18,
     fontFamily: 'Verdana, sans-serif',
     text: text.value,
