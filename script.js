@@ -1,6 +1,7 @@
 // global variables
 var boxWidth = 50;
 var boxNo = 0;
+var labelNo = 0;
 var arrow = () => 1;
 var initialX = 0;
 var initialY = 0;
@@ -15,6 +16,7 @@ var settings = document.getElementById("settings");
 var head = document.getElementById("head");
 var tail = document.getElementById("tail");
 var text = document.getElementById("add-text");
+var label = document.getElementById("add-label");
 var headSelect = document.getElementById("headSelect");
 var tailSelect = document.getElementById("tailSelect");
 var mycanvas = document.getElementById("myCanvas");
@@ -337,7 +339,7 @@ function downloadImage() {
 
 // Add text
 function addText() {
-  $('canvas').drawText({
+  $canvas.drawText({
     draggable: true,
     fillStyle: '#000',
     strokeWidth: 2,
@@ -353,3 +355,47 @@ function addText() {
     },
   });
 }
+
+// Add label
+function addLabel() {
+  const x = 100;
+  const y = 100;
+
+  $canvas.drawText({
+    draggable: true,
+    groups: ['label' + labelNo],
+    dragGroups: ['label' + labelNo],
+    name: 'label' + labelNo,
+    fillStyle: '#000',
+    strokeWidth: 2,
+    x: x, y: y,
+    fontSize: 18,
+    fontFamily: 'Verdana, sans-serif',
+    text: label.value,
+    updateDragX: function (layer, x) {
+      return nearest(x, 5);
+    },
+    updateDragY: function (layer, y) {
+      return nearest(y, 5);
+    },
+  });
+
+  const width = $canvas.measureText('label' + labelNo).width /  2;
+
+  $canvas.drawLine({
+    strokeStyle: '#000',
+    draggable: true,
+    groups: ['label' + labelNo],
+    dragGroups: ['label' + labelNo],
+    strokeWidth: 2,
+    endArrow: true,
+    arrowRadius: 5,
+    arrowAngle: 90,
+    x1: x + width + 5, y1: y,
+    x2: x + width + 25, y2: y,
+  });
+
+  labelNo++;
+}
+
+//let width1 = Math.max(boxWidth, $('canvas').measureText('text' + boxNo + 'one').width);
