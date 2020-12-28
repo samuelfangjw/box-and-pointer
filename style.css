@@ -27,3 +27,18 @@
   top: 10px;
   right: 10px;
 }
+
+.button {
+  position: relative;
+  background-color: #4c63af;
+  border: none;
+  margin: 10px;
+  color: #FFFFFF;
+  padding: 5px;
+  width: 100px;
+  text-align: center;
+  transition-duration: 0.4s;
+  text-decoration: none;
+  overflow: hidden;
+  cursor: pointer;
+}
